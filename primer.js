@@ -346,10 +346,26 @@ else
 
 let ukupno = 0
 for (let i = 0; i < korisnici.length; i++) {
-    const plata = Number(korisnici[i].balance.replace("$","").replace(".",""))
+    const user = korisnici[i]
+    const sablon = `
+    <div class="korisnik">
+        <h3>${user.name}</h3>
+         <img src=${user.picture}>
+         <p>Starost: ${user.age}</p>
+          <p>Plata: ${user.balance}</p>
+    </div>
+`
+    root.innerHTML += sablon
+    
+    const plata = Number(korisnici[i].balance.replace("$", "").replace(".", ""))
     ukupno += plata
+    
+    
 }
 const prosek = ukupno / korisnici.length
-console.log("Prosecna plata korisnika je:" + prosek.toFixed(2) + " dolara");
+root.innerHTML += "Prosecna plata korisnika je:" + prosek.toFixed(2) + " dolara"
+console.log(typeof prosek);
 
 // prosecna plata korisnika
+
+
